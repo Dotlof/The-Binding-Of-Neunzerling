@@ -1,14 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class scr_Bullet : MonoBehaviour
 {
     public GameObject Player;
     float speed = 1000;
-    public bool LR;
+    public int LR;
     Vector3 moveLeft = new Vector3(-1, 0, 0);
     Vector3 moveRight = new Vector3(1, 0, 0);
+    Vector3 moveTop = new Vector3(0, 1, 0);
+    Vector3 moveBottom = new Vector3(0, -1, 0);
     // Start is called before the first frame update
     
     IEnumerator Despawn()
@@ -33,15 +36,25 @@ public class scr_Bullet : MonoBehaviour
     {
         
         
-        if (LR == true)
+        if (LR == 1)
         {
-            transform.localScale = new Vector3(1, 1, 1);
-            transform.position += moveLeft * speed * Time.deltaTime;
-        }
-        if(LR == false)
-        {
-            transform.position += moveRight * speed * Time.deltaTime;
             transform.localScale = new Vector3(-1, 1, 1);
+            transform.position += moveRight * speed * Time.deltaTime;
+        }
+        if (LR == 2)
+        {
+            transform.position += moveLeft * speed * Time.deltaTime;
+            transform.localScale = new Vector3(1, 1, 1);
+        }
+        if (LR == 3)
+        {
+            transform.position += moveTop * speed * Time.deltaTime;
+            transform.localRotation = Quaternion.Euler(0, 0, -90);
+        }
+        if (LR == 4)
+        {
+            transform.position += moveBottom * speed * Time.deltaTime;
+            transform.localRotation = Quaternion.Euler(0, 0, 90);
         }
     }
 }

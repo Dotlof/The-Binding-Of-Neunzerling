@@ -1,9 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class scr_Testchar : MonoBehaviour
 {
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        //Debug.Log("hit detected");
+        StartCoroutine(Wifi());
+        Destroy(other.gameObject);
+        
+    }
+
+    IEnumerator Wifi()
+    {
+        MovementSpeed = 300;
+        yield return new WaitForSeconds(10f);
+        MovementSpeed = 187;
+    }
+
     // Start is called before the first frame update
     public float MovementSpeed = 100;
     Vector3 movement;
@@ -11,7 +28,7 @@ public class scr_Testchar : MonoBehaviour
     //Vector3 rotateL = new Vector3(-1, 0, 0);
     public GameObject bullet;
     public GameObject AK;
-    public bool RL;  //true=L, false=R
+    public int RL;  //true=L, false=R
 
     public void Shoot()
     {
@@ -37,22 +54,50 @@ public class scr_Testchar : MonoBehaviour
         movement.y = Input.GetAxisRaw("Vertical");
         transform.position += new Vector3(0, movement.y, 0) * Time.deltaTime * MovementSpeed;
 
-        if (movement.x > 0)
+        if (Input.GetKeyDown(KeyCode.A))
         {
-            RL = false;
+            transform.localScale = new Vector3(1, 1, 1);
+        }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            transform.localScale = new Vector3(-1, 1, 1);
+        }
+
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            RL = 1;
             transform.localScale = new Vector3(-1,1,1);
+            AK.transform.localRotation = Quaternion.Euler(0, 0, 45);
         }
         else
         {
-            if (movement.x != 0)
+            if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
                 transform.localScale = new Vector3(1, 1, 1);
-                RL = true;
+                AK.transform.localRotation = Quaternion.Euler(0, 0, 45);
+                RL = 2;
             }
             
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            AK.transform.localRotation = Quaternion.Euler(0,0,-45);
+            RL = 3;
+        }
+
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                AK.transform.localRotation = Quaternion.Euler(0, 0, 135);
+                RL = 4;
+            }
+            
+        }
+
+
+        if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))
         {
             Shoot();
         }
