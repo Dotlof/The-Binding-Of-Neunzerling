@@ -7,14 +7,29 @@ public class scr_Testchar : MonoBehaviour
     // Start is called before the first frame update
     public float MovementSpeed = 100;
     Vector3 movement;
+    //Vector3 rotateR = new Vector3(1, 0, 0);
+    //Vector3 rotateL = new Vector3(-1, 0, 0);
+    public GameObject bullet;
+    public GameObject AK;
+    public bool RL;  //true=L, false=R
 
-    /*public void Shoot()
+    public void Shoot()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (look)
+            if (RL == true)
+            {
+                Instantiate(bullet,AK.transform.position,Quaternion.identity);
+                //bullet.GetComponent<scr_Bullet>().LR = true;
+
+            }
+            else
+            {
+                Instantiate(bullet, AK.transform.position, Quaternion.identity);
+                //bullet.GetComponent<scr_Bullet>().LR = false;
+            }
         }
-    }*/
+    }
 
     private void Start()
     {
@@ -24,6 +39,8 @@ public class scr_Testchar : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        //Debug.Log(RL);
+        Shoot();
         movement.x = Input.GetAxisRaw("Horizontal");
         transform.position += new Vector3(movement.x, 0, 0) * Time.deltaTime * MovementSpeed;
 
@@ -32,6 +49,7 @@ public class scr_Testchar : MonoBehaviour
 
         if (movement.x > 0)
         {
+            RL = false;
             transform.localScale = new Vector3(-1,1,1);
         }
         else
@@ -39,7 +57,7 @@ public class scr_Testchar : MonoBehaviour
             if (movement.x != 0)
             {
                 transform.localScale = new Vector3(1, 1, 1);
-
+                RL = true;
             }
             
         }
