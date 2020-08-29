@@ -17,25 +17,31 @@ public class scr_Bullet : MonoBehaviour
         Destroy(gameObject);
     }
 
+    void Awake()
+    {
+        Debug.Log(LR);
+        StartCoroutine(Despawn());
+    }
+
     void Start()
     {
-        LR = Player.GetComponent<scr_Testchar>().RL;
-        StartCoroutine(Despawn());
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(LR);
-        /*if (LR == true)
+        
+        
+        if (LR == true)
         {
             transform.localScale = new Vector3(1, 1, 1);
             transform.position += moveLeft * speed * Time.deltaTime;
         }
-        else
+        if(LR == false)
         {
             transform.position += moveRight * speed * Time.deltaTime;
             transform.localScale = new Vector3(-1, 1, 1);
-        }*/
+        }
     }
 }

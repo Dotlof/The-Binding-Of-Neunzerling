@@ -15,21 +15,11 @@ public class scr_Testchar : MonoBehaviour
 
     public void Shoot()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if (RL == true)
-            {
-                Instantiate(bullet,AK.transform.position,Quaternion.identity);
-                //bullet.GetComponent<scr_Bullet>().LR = true;
+        Debug.Log(RL);
+        bullet.GetComponent<scr_Bullet>().LR = RL;
+        Instantiate(bullet,AK.transform.position,Quaternion.identity);
 
-            }
-            else
-            {
-                Instantiate(bullet, AK.transform.position, Quaternion.identity);
-                //bullet.GetComponent<scr_Bullet>().LR = false;
-            }
         }
-    }
 
     private void Start()
     {
@@ -40,7 +30,7 @@ public class scr_Testchar : MonoBehaviour
     private void Update()
     {
         //Debug.Log(RL);
-        Shoot();
+        
         movement.x = Input.GetAxisRaw("Horizontal");
         transform.position += new Vector3(movement.x, 0, 0) * Time.deltaTime * MovementSpeed;
 
@@ -61,5 +51,12 @@ public class scr_Testchar : MonoBehaviour
             }
             
         }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Shoot();
+        }
+
+
     }
 }
