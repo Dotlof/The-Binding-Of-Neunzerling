@@ -7,6 +7,8 @@ TagManager:
   - Wall
   - roomSpawnPoint
   - Rooms
+  - Wifi
+  - Stohwasser
   layers:
   - Default
   - TransparentFX

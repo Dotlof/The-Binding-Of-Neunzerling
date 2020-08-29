@@ -5,6 +5,16 @@ using UnityEngine.Tilemaps;
 
 public class scr_Bullet : MonoBehaviour
 {
+
+    private void OnTriggerEnter2D(Collider2D stohwasser)
+    {
+        Destroy(stohwasser.gameObject);
+        Destroy(gameObject);
+        Debug.Log("hit");
+    }
+
+
+    public GameObject stohwasser;
     public GameObject Player;
     float speed = 1000;
     public int LR;

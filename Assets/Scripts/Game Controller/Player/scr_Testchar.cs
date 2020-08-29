@@ -6,11 +6,19 @@ using UnityEngine.Tilemaps;
 public class scr_Testchar : MonoBehaviour
 {
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D wifi)
     {
         //Debug.Log("hit detected");
-        StartCoroutine(Wifi());
-        Destroy(other.gameObject);
+        if (wifi.gameObject.tag == "Wifi")
+        {
+            StartCoroutine(Wifi());
+            Destroy(wifi.gameObject);
+        }
+        if (wifi.gameObject.tag == "Stohwasser")
+        {
+            Destroy(gameObject);
+        }
+
         
     }
 
@@ -28,6 +36,7 @@ public class scr_Testchar : MonoBehaviour
     //Vector3 rotateL = new Vector3(-1, 0, 0);
     public GameObject bullet;
     public GameObject AK;
+    public GameObject wifi;
     public int RL;  //true=L, false=R
 
     public void Shoot()
