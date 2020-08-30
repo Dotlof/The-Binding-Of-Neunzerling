@@ -26,8 +26,14 @@ public class scr_Stohwasser : MonoBehaviour
     private Transform target;
     public GameObject tar;
     public GameObject Bullet;
+    public GameObject minibar;
+    public GameObject Stohwasser;
     public Sprite Damage;
     public Sprite Normal;
+    public Sprite bar2;
+    public Sprite bar3;
+    public Sprite bar4;
+    public Sprite bar5;
     int health = 5;
 
     // Start is called before the first frame update
@@ -50,7 +56,28 @@ public class scr_Stohwasser : MonoBehaviour
         if (health <= 0)
         {
             Destroy(gameObject);
+            Destroy(Stohwasser.gameObject);
         }
 
+        minibar.transform.rotation = Quaternion.Euler(0, 0, 0);
+
+
+        if (health == 4)
+        {
+            minibar.gameObject.GetComponent<SpriteRenderer>().sprite = bar2;
+        }
+        if (health == 3)
+        {
+            minibar.gameObject.GetComponent<SpriteRenderer>().sprite = bar3;
+        }
+        if (health == 2)
+        {
+            minibar.gameObject.GetComponent<SpriteRenderer>().sprite = bar4;
+        }
+        if (health == 1)
+        {
+            minibar.gameObject.GetComponent<SpriteRenderer>().sprite = bar5;
+
+        }
     }
 }

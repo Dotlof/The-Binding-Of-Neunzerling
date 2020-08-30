@@ -32,6 +32,16 @@ public class scr_5klassler : MonoBehaviour
         Instantiate(Sniperbullet, Sniperbullet.transform.position, Quaternion.identity);
     }
 
+    public GameObject minibar;
+    public Sprite bar2;
+    public Sprite bar3;
+    public Sprite bar4;
+    public Sprite bar5;
+    public Sprite bar6;
+    public Sprite bar7;
+    public Sprite bar8;
+    public Sprite bar9;
+    public Sprite bar10;
     public Sprite Damage;
     public Sprite Normal;
     public GameObject Sniper;
@@ -51,9 +61,11 @@ public class scr_5klassler : MonoBehaviour
         Pumpshot();
         Pumpshot();
         transform.localScale = new Vector3(-1, 1, 1);
+        minibar.transform.localScale = new Vector3(-3, 3, 1);
         yield return new WaitForSeconds(3f);
         Snipeshot();
         transform.localScale = new Vector3(1, 1, 1);
+        minibar.transform.localScale = new Vector3(3, 3, 1);
         StartCoroutine(Shoot());
     }
     
@@ -78,5 +90,42 @@ public class scr_5klassler : MonoBehaviour
             transform.position = Vector2.MoveTowards(transform.position, target.position, Speed * Time.deltaTime);
         }
 
+
+        if (health == 9)
+        {
+            minibar.gameObject.GetComponent<SpriteRenderer>().sprite = bar2;
+        }
+        if (health == 8)
+        {
+            minibar.gameObject.GetComponent<SpriteRenderer>().sprite = bar3;
+        }
+        if (health == 7)
+        {
+            minibar.gameObject.GetComponent<SpriteRenderer>().sprite = bar4;
+        }
+        if (health == 6)
+        {
+            minibar.gameObject.GetComponent<SpriteRenderer>().sprite = bar5;
+        }
+        if (health == 5)
+        {
+            minibar.gameObject.GetComponent<SpriteRenderer>().sprite = bar6;
+        }
+        if (health == 4)
+        {
+            minibar.gameObject.GetComponent<SpriteRenderer>().sprite = bar7;
+        }
+        if (health == 3)
+        {
+            minibar.gameObject.GetComponent<SpriteRenderer>().sprite = bar8;
+        }
+        if (health == 2)
+        {
+            minibar.gameObject.GetComponent<SpriteRenderer>().sprite = bar9;
+        }
+        if (health == 1)
+        {
+            minibar.gameObject.GetComponent<SpriteRenderer>().sprite = bar10;
+        }
     }
 }
