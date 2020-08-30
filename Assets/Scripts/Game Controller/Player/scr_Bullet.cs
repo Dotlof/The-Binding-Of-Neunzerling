@@ -8,9 +8,13 @@ public class scr_Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D stohwasser)
     {
-        Destroy(stohwasser.gameObject);
-        Destroy(gameObject);
-        Debug.Log("hit");
+        if (stohwasser.gameObject.tag == "Stohwasser")
+        {
+            Destroy(stohwasser.gameObject);
+            Destroy(gameObject);
+            Debug.Log("hit");
+        }
+
     }
 
 

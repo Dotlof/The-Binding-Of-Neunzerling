@@ -6,15 +6,16 @@ using UnityEngine.UIElements;
 
 public class scr_Stohwasser : MonoBehaviour
 {
+
     float Speed = 100;
-    float charx;
-    float chary;
-    public GameObject Player;
+    private Transform target;
+    public GameObject tar;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        target = tar.GetComponent<Transform>();
+        target = GameObject.FindGameObjectWithTag("Playerloc").GetComponent<Transform>();
     }
 
     private void FixedUpdate()
@@ -26,6 +27,7 @@ public class scr_Stohwasser : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += new Vector3(charx, chary, 0) * Time.deltaTime * Speed;
+        transform.position = Vector2.MoveTowards(transform.position, target.position, Speed * Time.deltaTime);
+
     }
 }

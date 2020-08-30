@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2774117311957145364}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Playerloc
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -147,6 +147,8 @@ MonoBehaviour:
   MovementSpeed: 187
   bullet: {fileID: 845982738606797251, guid: de9eca4fe99f205478e533a6e78bab83, type: 3}
   AK: {fileID: 2774117312067112561}
+  wifi: {fileID: 0}
+  RL: 0
 --- !u!1 &2774117312067112561
 GameObject:
   m_ObjectHideFlags: 0

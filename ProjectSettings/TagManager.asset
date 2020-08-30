@@ -9,6 +9,7 @@ TagManager:
   - Rooms
   - Wifi
   - Stohwasser
+  - Playerloc
   layers:
   - Default
   - TransparentFX
