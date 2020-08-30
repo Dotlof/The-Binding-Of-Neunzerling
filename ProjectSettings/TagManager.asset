@@ -15,6 +15,7 @@ TagManager:
   - Pblocker
   - RoomCenter
   - Bullet
+  - Room
   layers:
   - Default
   - TransparentFX
