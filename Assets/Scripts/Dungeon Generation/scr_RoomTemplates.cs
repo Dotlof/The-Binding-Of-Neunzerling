@@ -8,4 +8,5 @@ public class scr_RoomTemplates : MonoBehaviour
     public GameObject[] topRooms;
     public GameObject[] leftRooms;
     public GameObject[] rightRooms;
+    public GameObject Blocker;
 }

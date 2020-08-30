@@ -7,11 +7,12 @@ public class scr_RoomSpawner : MonoBehaviour
     private scr_RoomTemplates templates;
     private int randnumb;
     public bool spawned = false;
+    //bool onSpawn = false;
 
     void Start()
     {
         templates = GameObject.FindGameObjectWithTag("Rooms").GetComponent<scr_RoomTemplates>();
-        Invoke("Spawn", 1f);
+        Invoke("Spawn", 0.1f);
     }
 
     public int openingDirection;
@@ -62,8 +63,9 @@ public class scr_RoomSpawner : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "roomSpawnPoint" && other.GetComponent<scr_RoomSpawner>().spawned == true)
+        if (other.tag == "roomSpawnPoint"/*&& other.GetComponent<scr_RoomSpawner>().spawned == true*/)
         {
+            //Instantiate(templates.Blocker, transform.position, transform.rotation);
             Destroy(gameObject);
         }
     }

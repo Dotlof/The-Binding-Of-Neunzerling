@@ -10,7 +10,7 @@ public class scr_Destroyer : MonoBehaviour
         if (collision.tag == ("roomSpawnPoint"))
         {
             Destroy(collision.gameObject);
-            Debug.Log("Deleted Spawnpoint");
+            //Debug.Log("Deleted Spawnpoint");
         }
     }
    
