@@ -145,6 +145,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d93f907ef0da7d14fa16650c8ee5562d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Damage: {fileID: 21300000, guid: 797f23838feb4f443bb8fc50c226f09c, type: 3}
+  Normal: {fileID: 21300000, guid: 40e926a5c7a14bc43bb770c9a3fe8de7, type: 3}
   Sniper: {fileID: 3141439807544162676}
   Sniperbullet: {fileID: 5420846545289537485, guid: 77b9dff4c1d3d7a41850747cbb9d6139,
     type: 3}

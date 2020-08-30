@@ -4,6 +4,21 @@ using UnityEngine;
 
 public class scr_5klassler : MonoBehaviour
 {
+    private void OnTriggerEnter2D(Collider2D Bullet)
+    {
+        if (Bullet.gameObject.tag == "Bullet")
+        {
+            health = health - 1;
+            StartCoroutine(dmg());
+        }
+    }
+
+    IEnumerator dmg()
+    {
+        this.gameObject.GetComponent<SpriteRenderer>().sprite = Damage;
+        yield return new WaitForSeconds(0.5F);
+        this.gameObject.GetComponent<SpriteRenderer>().sprite = Normal;
+    }
 
     public void Pumpshot()
     {
@@ -17,11 +32,14 @@ public class scr_5klassler : MonoBehaviour
         Instantiate(Sniperbullet, Sniperbullet.transform.position, Quaternion.identity);
     }
 
+    public Sprite Damage;
+    public Sprite Normal;
     public GameObject Sniper;
     public GameObject Sniperbullet;
     public GameObject Pumpgun;
     public GameObject Pumpbullet;
     float Speed = 100;
+    int health = 10;
     private Transform target;
 
     IEnumerator Shoot()
@@ -50,6 +68,11 @@ public class scr_5klassler : MonoBehaviour
 
     void Update()
     {
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+        }
+
         if (Vector2.Distance(transform.position, target.position) > 500)
         {
             transform.position = Vector2.MoveTowards(transform.position, target.position, Speed * Time.deltaTime);

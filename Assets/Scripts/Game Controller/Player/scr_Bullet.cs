@@ -10,7 +10,6 @@ public class scr_Bullet : MonoBehaviour
     {
         if (stohwasser.gameObject.tag == "Stohwasser")
         {
-            Destroy(stohwasser.gameObject);
             Destroy(gameObject);
             Debug.Log("hit");
         }
