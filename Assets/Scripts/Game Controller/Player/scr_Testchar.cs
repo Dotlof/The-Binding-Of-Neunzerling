@@ -43,13 +43,13 @@ public class scr_Testchar : MonoBehaviour
     {
         Debug.Log(RL);
         bullet.GetComponent<scr_Bullet>().LR = RL;
-        Instantiate(bullet,AK.transform.position,Quaternion.identity);
+        Instantiate(bullet, AK.transform.position, Quaternion.identity);
+    }
 
-        }
 
     private void Start()
     {
-        
+
     }
 
     // Update is called once per frame
