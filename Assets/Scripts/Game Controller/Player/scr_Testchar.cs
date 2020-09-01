@@ -30,6 +30,7 @@ public class scr_Testchar : MonoBehaviour
     }
 
     // Start is called before the first frame update
+    public bool tot = false;
     public float MovementSpeed = 100;
     Vector3 movement;
     //Vector3 rotateR = new Vector3(1, 0, 0);
@@ -55,7 +56,12 @@ public class scr_Testchar : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        //Debug.Log(RL);
+
+        if (tot == true)
+        {
+            Destroy(gameObject);
+        }
+        Debug.Log(tot);
         
         movement.x = Input.GetAxisRaw("Horizontal");
         transform.position += new Vector3(movement.x, 0, 0) * Time.deltaTime * MovementSpeed;

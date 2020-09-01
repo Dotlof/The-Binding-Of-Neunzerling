@@ -74,7 +74,6 @@ public class scr_5klassler : MonoBehaviour
     void Start()
     {
         target = GameObject.FindGameObjectWithTag("Playerloc").GetComponent<Transform>();
-        Pumpshot();
         StartCoroutine(Shoot());
     }
 
