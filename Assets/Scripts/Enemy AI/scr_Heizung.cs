@@ -83,6 +83,14 @@ public class scr_Heizung : MonoBehaviour
         damageSprite = false;
     }
 
+    IEnumerator death()
+    {
+        animator.SetBool("Death?", true);
+        yield return new WaitForSeconds(0.5F);
+        Destroy(gameObject);
+        Debug.Log("Heizungdeath");
+    }
+
     public GameObject minibar;
     public Sprite bar14;
     public Sprite bar13;
@@ -104,6 +112,7 @@ public class scr_Heizung : MonoBehaviour
     public Sprite Normal;
     public Sprite Damage;
     public float health = 15;
+    bool doOnce = true;
     public scr_Testchar PlayerReference;
     public GameObject Player;
     private Transform target;
@@ -112,6 +121,7 @@ public class scr_Heizung : MonoBehaviour
     public Sprite Heizung4;
     public Sprite Heizung5;
     public Sprite Heizung1;
+    public Animator animator;
     // Start is called before the first frame update
     void Start()
     {
@@ -124,29 +134,39 @@ public class scr_Heizung : MonoBehaviour
         if (Vector2.Distance(transform.position, target.position) < 200 && damageSprite == false)
         {
             this.gameObject.GetComponent<SpriteRenderer>().sprite = Heizung5;
-            PlayerReference.tot = true;
-            Debug.Log(PlayerReference.tot);
+            if (doOnce == true)
+            {
+                doOnce = false;
+                PlayerReference.tot = true;
+                Debug.Log(PlayerReference.tot);
+                StartCoroutine(death());
+            }
+
         }
         else if (Vector2.Distance(transform.position, target.position) < 300 && damageSprite == false)
         {
             this.gameObject.GetComponent<SpriteRenderer>().sprite = Heizung4;
+            //Debug.Log("Heizung 4");
         }
         else if (Vector2.Distance(transform.position, target.position) < 400 && damageSprite == false)
         {
             this.gameObject.GetComponent<SpriteRenderer>().sprite = Heizung3;
+            //Debug.Log("Heizung 3");
         }
         else if (Vector2.Distance(transform.position, target.position) < 500 && damageSprite == false)
         {
             this.gameObject.GetComponent<SpriteRenderer>().sprite = Heizung2;
+            //Debug.Log("Heizung 2");
         }
         else if (damageSprite == false)
         {
             this.gameObject.GetComponent<SpriteRenderer>().sprite = Heizung1;
+            //Debug.Log("Heizung 1");
         }
 
         if (health <= 0)
         {
-            Destroy(gameObject);
+            StartCoroutine(death());
         }
 
         Healthbar();

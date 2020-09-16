@@ -10,7 +10,8 @@ public class scr_Pumpbullet : MonoBehaviour
     {
         if (Enemy.gameObject.tag == "Playerloc")
         {
-            Destroy(Enemy.gameObject);
+
+            Enemy.GetComponent<scr_Testchar>().currentHealth--;
             Destroy(gameObject);
             Debug.Log("hit");
         }

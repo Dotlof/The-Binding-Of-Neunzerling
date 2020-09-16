@@ -145,11 +145,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9221f2e33ca9c54781581c6c91a93b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tot: 0
   MovementSpeed: 187
   bullet: {fileID: 845982738606797251, guid: de9eca4fe99f205478e533a6e78bab83, type: 3}
   AK: {fileID: 2774117312067112561}
   wifi: {fileID: 0}
   RL: 0
+  currentHealth: 3
 --- !u!114 &560879649882333764
 MonoBehaviour:
   m_ObjectHideFlags: 0

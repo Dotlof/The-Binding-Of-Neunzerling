@@ -8,7 +8,7 @@ public class scr_Testchar : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D wifi)
     {
-        //Debug.Log("hit detected");
+        Debug.Log(wifi);
         if (wifi.gameObject.tag == "Wifi")
         {
             StartCoroutine(Wifi());
@@ -16,7 +16,9 @@ public class scr_Testchar : MonoBehaviour
         }
         if (wifi.gameObject.tag == "Stohwasser")
         {
-            Destroy(gameObject);
+            currentHealth--;
+            wifi.GetComponent<scr_Stohwasser>().irgendnennamen = true;
+            Debug.Log(wifi);
         }
 
         
@@ -39,6 +41,7 @@ public class scr_Testchar : MonoBehaviour
     public GameObject AK;
     public GameObject wifi;
     public int RL;  //true=L, false=R
+    public int currentHealth = 3;
 
     public void Shoot()
     {
@@ -56,13 +59,20 @@ public class scr_Testchar : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        if (currentHealth <= 0)
+        {
+            Destroy(gameObject);
+            Debug.Log(currentHealth);
+        }
 
         if (tot == true)
         {
-            Destroy(gameObject);
+            currentHealth--;
+            tot = false;
+            Debug.Log(currentHealth);
         }
-        Debug.Log(tot);
-        
+
+
         movement.x = Input.GetAxisRaw("Horizontal");
         transform.position += new Vector3(movement.x, 0, 0) * Time.deltaTime * MovementSpeed;
 

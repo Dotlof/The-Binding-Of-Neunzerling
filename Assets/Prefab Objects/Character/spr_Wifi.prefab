@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 990521684528297623}
   m_Layer: 0
   m_Name: spr_Wifi
-  m_TagString: Untagged
+  m_TagString: Wifi
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

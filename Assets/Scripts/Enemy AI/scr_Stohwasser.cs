@@ -23,6 +23,8 @@ public class scr_Stohwasser : MonoBehaviour
     }
 
     float Speed = 100;
+    public bool irgendnennamen;
+    public GameObject FixedStohwasser;
     private Transform target;
     public GameObject tar;
     public GameObject Bullet;
@@ -78,6 +80,11 @@ public class scr_Stohwasser : MonoBehaviour
         {
             minibar.gameObject.GetComponent<SpriteRenderer>().sprite = bar5;
 
+        }
+
+        if (irgendnennamen == true)
+        {
+            FixedStohwasser.GetComponent<scr_Ericistdumm>().egalwie = true;
         }
     }
 }
