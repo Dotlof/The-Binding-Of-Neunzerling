@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -30,6 +31,12 @@ public class scr_Testchar : MonoBehaviour
         yield return new WaitForSeconds(10f);
         MovementSpeed = 187;
     }
+    IEnumerator Reload()
+    {
+        yield return new WaitForSeconds(1.5f);
+        arrow.GetComponent<scr_Arrow>().LR = RL;
+        Instantiate(arrow, Bow.transform.position, Quaternion.identity);
+    }
 
     // Start is called before the first frame update
     public bool tot = false;
@@ -38,16 +45,29 @@ public class scr_Testchar : MonoBehaviour
     //Vector3 rotateR = new Vector3(1, 0, 0);
     //Vector3 rotateL = new Vector3(-1, 0, 0);
     public GameObject bullet;
+    public GameObject arrow;
     public GameObject AK;
+    public GameObject Bow;
     public GameObject wifi;
     public int RL;  //true=L, false=R
     public int currentHealth = 3;
+    public int Weapon = 1;
+
+
 
     public void Shoot()
     {
-        Debug.Log(RL);
-        bullet.GetComponent<scr_Bullet>().LR = RL;
-        Instantiate(bullet, AK.transform.position, Quaternion.identity);
+        if(Weapon == 1)
+        {
+            Debug.Log(RL);
+            bullet.GetComponent<scr_Bullet>().LR = RL;
+            Instantiate(bullet, AK.transform.position, Quaternion.identity);
+        }
+        if (Weapon == 2)
+        {
+            StartCoroutine(Reload());
+        }
+
     }
 
 
@@ -126,6 +146,7 @@ public class scr_Testchar : MonoBehaviour
         {
             Shoot();
         }
+
 
 
     }

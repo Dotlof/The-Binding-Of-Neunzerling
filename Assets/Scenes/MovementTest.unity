@@ -424,6 +424,11 @@ PrefabInstance:
       propertyPath: tot
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2774117311957145364, guid: 60bcd7eb8dd351e49abc1742fd43fa12,
+        type: 3}
+      propertyPath: Weapon
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2774117311957145365, guid: 60bcd7eb8dd351e49abc1742fd43fa12,
         type: 3}
       propertyPath: m_IsTrigger
