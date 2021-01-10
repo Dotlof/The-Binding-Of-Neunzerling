@@ -31,12 +31,14 @@ public class scr_Testchar : MonoBehaviour
         yield return new WaitForSeconds(10f);
         MovementSpeed = 187;
     }
-    IEnumerator Reload()
+
+    IEnumerator BowCooldown()
     {
-        yield return new WaitForSeconds(1.5f);
-        arrow.GetComponent<scr_Arrow>().LR = RL;
-        Instantiate(arrow, Bow.transform.position, Quaternion.identity);
+        bowshot = true;
+        yield return new WaitForSeconds(0.5f);
+        bowshot = false;
     }
+
 
     // Start is called before the first frame update
     public bool tot = false;
@@ -52,6 +54,8 @@ public class scr_Testchar : MonoBehaviour
     public int RL;  //true=L, false=R
     public int currentHealth = 3;
     public int Weapon = 1;
+    public bool bowshot;
+    bool bowshotFinished;
 
 
 
@@ -65,7 +69,7 @@ public class scr_Testchar : MonoBehaviour
         }
         if (Weapon == 2)
         {
-            StartCoroutine(Reload());
+            StartCoroutine(BowCooldown());
         }
 
     }
@@ -147,6 +151,13 @@ public class scr_Testchar : MonoBehaviour
             Shoot();
         }
 
+        bowshotFinished = Bow.gameObject.GetComponent<scr_Bow>().bowshotFinished;
+        if (bowshotFinished == true)
+        {
+            arrow.GetComponent<scr_Arrow>().LR = RL;
+            Instantiate(arrow, Bow.transform.position, Quaternion.identity);
+            Bow.gameObject.GetComponent<scr_Bow>().bowshotFinished = false;
+        }
 
 
     }

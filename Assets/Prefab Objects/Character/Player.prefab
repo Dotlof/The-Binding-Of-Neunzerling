@@ -156,6 +156,7 @@ MonoBehaviour:
   RL: 0
   currentHealth: 3
   Weapon: 2
+  bowshot: 0
 --- !u!114 &560879649882333764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -361,6 +362,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 2774117311957145361}
+  animator: {fileID: 4925978872527938284}
+  bowshotFinished: 0
 --- !u!95 &4925978872527938284
 Animator:
   serializedVersion: 3
